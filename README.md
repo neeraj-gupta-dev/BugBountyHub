@@ -73,10 +73,7 @@ BugBountyHub/
 
 ## 5. Environment Variables
 
-> [!WARNING]
-> **Security Note:** Never commit `.env` files to GitHub. They are intentionally excluded using `.gitignore`.
-
-Create a `.env` file inside the `backend` folder (DO NOT COMMIT THIS FILE).
+Create a `.env` file inside the `backend` folder.
 
 ### Example backend `.env`:
 ```env
@@ -132,6 +129,7 @@ VITE_API_URL=<your_backend_api_url>
 The backend includes a `seed.js` script that populates the database with realistic demo data, including users, projects, bug reports, and notifications.
 
 You can log in to the platform at `http://localhost:5173` using any of the following accounts:
+password for all accounts is `password123`
 
 - **Admin Account**: `admin@bugbounty.com`
   - *Has access to the Admin Control Center to monitor system analytics and block/unblock users.*
