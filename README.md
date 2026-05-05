@@ -83,7 +83,7 @@ JWT_SECRET=<your_super_secret>
 CLIENT_URL=<your_frontend_url>
 ```
 
-Create a `.env` file inside the `frontend` folder (DO NOT COMMIT THIS FILE).
+Create a `.env` file inside the `frontend` folder.
 
 ### Example frontend `.env`:
 ```env
