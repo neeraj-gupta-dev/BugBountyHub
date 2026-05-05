@@ -73,20 +73,24 @@ BugBountyHub/
 
 ## 5. Environment Variables
 
-To run the application locally, you need to create `.env` files in both the `backend` and `frontend` directories.
+> [!WARNING]
+> **Security Note:** Never commit `.env` files to GitHub. They are intentionally excluded using `.gitignore`.
 
-### Backend `.env`:
+Create a `.env` file inside the `backend` folder (DO NOT COMMIT THIS FILE).
+
+### Example backend `.env`:
 ```env
 PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_super_secret_jwt_key
-CLIENT_URL=http://localhost:5173
+MONGO_URI=<your_mongodb_connection_string>
+JWT_SECRET=<your_super_secret>
+CLIENT_URL=<your_frontend_url>
 ```
 
-### Frontend `.env`:
-*(Note: Create this inside the `frontend` folder)*
+Create a `.env` file inside the `frontend` folder (DO NOT COMMIT THIS FILE).
+
+### Example frontend `.env`:
 ```env
-VITE_API_URL=http://localhost:5000/api
+VITE_API_URL=<your_backend_api_url>
 ```
 
 ---
@@ -136,8 +140,7 @@ You can log in to the platform at `http://localhost:5173` using any of the follo
 - **Tester Account**: `charlie@tester.com`
   - *Can view active projects, submit bug reports, earn bounty points, and climb the leaderboard.*
 
-**Password for all demo accounts**: `password123`
-
+Use the seed script to generate demo users locally.
 *(To regenerate the demo data, run `node seed.js` from within the `backend` directory).*
 
 ---

@@ -1,8 +1,6 @@
-node_modules/
+node_modules
 .env
-.DS_Store
-dist/
-dist-ssr/
-logs
-*.log
-backend/uploads/
+backend/.env
+frontend/.env
+dist
+build
