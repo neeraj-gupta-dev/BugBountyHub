@@ -2,6 +2,8 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
+const isProd = process.env.NODE_ENV === "production";
+
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
 };
@@ -27,8 +29,9 @@ exports.register = async (req, res) => {
       const token = generateToken(user._id);
       res.cookie("token", token, {
         httpOnly: true,
-        secure: true,
-        sameSite: "none",
+        secure: isProd,
+        sameSite: isProd ? "none" : "lax",
+        path: "/",
         maxAge: 7 * 24 * 60 * 60 * 1000
       }).status(201).json({
         message: "Registration successful",
@@ -56,8 +59,9 @@ exports.login = async (req, res) => {
       const token = generateToken(user._id);
       res.cookie("token", token, {
         httpOnly: true,
-        secure: true,
-        sameSite: "none",
+        secure: isProd,
+        sameSite: isProd ? "none" : "lax",
+        path: "/",
         maxAge: 7 * 24 * 60 * 60 * 1000
       }).json({
         message: "Login successful",
@@ -90,6 +94,7 @@ exports.logout = (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: "none",
+    path: "/"
   });
   res.json({ message: "Logged out successfully" });
 };
