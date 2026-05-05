@@ -16,17 +16,28 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173', // For credentials, cannot be *
+    origin: [
+      'http://localhost:5173',
+      'https://bug-bounty-hub-blue.vercel.app'
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
   }
 });
 
 // Middleware
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://bug-bounty-hub-blue.vercel.app"
+  ],
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+app.set("trust proxy", 1);
 
 // Make io accessible to routers
 app.use((req, res, next) => {
